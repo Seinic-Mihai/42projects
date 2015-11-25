@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 10:48:45 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/25 21:03:10 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/25 18:28:40 by mseinic           #+#    #+#             */
+/*   Updated: 2015/11/25 21:19:58 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *restrict dest, const char *restrict src)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	char		*restrict d;
-	const char	*restrict s;
-
-	d = dest;
-	s = src;
-	while (*d)
-		d++;
-	while (*s)
-		*d++ = *s++;
-	*d = '\0';
-	return (dest);
+	if (s)
+	{
+		while (*s)
+		{
+			(*f)(s);
+			s++;
+		}
+	}	
 }

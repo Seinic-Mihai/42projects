@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 10:48:45 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/25 21:03:10 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/25 20:38:46 by mseinic           #+#    #+#             */
+/*   Updated: 2015/11/25 20:41:39 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *restrict dest, const char *restrict src)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	char		*restrict d;
-	const char	*restrict s;
-
-	d = dest;
-	s = src;
-	while (*d)
-		d++;
-	while (*s)
-		*d++ = *s++;
-	*d = '\0';
-	return (dest);
+	ft_putstr_fd(s, fd);
+	ft_putstr_fd("\n", fd);
 }

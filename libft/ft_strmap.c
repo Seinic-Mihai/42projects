@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 10:48:45 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/25 21:03:10 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/25 18:46:08 by mseinic           #+#    #+#             */
+/*   Updated: 2015/11/25 21:21:16 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *restrict dest, const char *restrict src)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	char		*restrict d;
-	const char	*restrict s;
-
-	d = dest;
-	s = src;
-	while (*d)
-		d++;
-	while (*s)
-		*d++ = *s++;
-	*d = '\0';
-	return (dest);
+	char		*str;
+	size_t		i;
+	
+	i = 0;
+	if (!(str = (char *)ft_memalloc(ft_strlen(s) + 1)))
+			return (0);
+	while (s[i])
+	{
+		str[i] = (*f)(s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

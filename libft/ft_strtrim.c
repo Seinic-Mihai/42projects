@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 10:48:45 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/25 21:03:10 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/25 19:42:01 by mseinic           #+#    #+#             */
+/*   Updated: 2015/11/25 21:17:02 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *restrict dest, const char *restrict src)
+char	*ft_strtrim(char const *s)
 {
-	char		*restrict d;
-	const char	*restrict s;
+	char *str;
+	size_t i;
 
-	d = dest;
-	s = src;
-	while (*d)
-		d++;
-	while (*s)
-		*d++ = *s++;
-	*d = '\0';
-	return (dest);
+	i = ft_strlen(s);
+	if (!(str = ft_memalloc(i + 1)))
+		return (0);
+	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
+		i--;
+	while (*s == ' ' || *s == '\n' || *s == '\t')
+	{
+		s++;
+		i--;
+	}
+	return (ft_memcpy(str, s, i));
 }

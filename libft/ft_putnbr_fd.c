@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 10:48:45 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/25 21:03:10 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/25 20:40:47 by mseinic           #+#    #+#             */
+/*   Updated: 2015/11/25 21:38:34 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *restrict dest, const char *restrict src)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char		*restrict d;
-	const char	*restrict s;
-
-	d = dest;
-	s = src;
-	while (*d)
-		d++;
-	while (*s)
-		*d++ = *s++;
-	*d = '\0';
-	return (dest);
+	if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+		ft_putchar_fd(n + '0', fd);
 }

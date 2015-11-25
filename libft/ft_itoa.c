@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_itoa1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 10:48:45 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/25 21:03:10 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/25 20:15:51 by mseinic           #+#    #+#             */
+/*   Updated: 2015/11/25 21:38:50 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_strcat(char *restrict dest, const char *restrict src)
+ 
+char    *ft_itoa(int nb)
 {
-	char		*restrict d;
-	const char	*restrict s;
+	char *str;
+	int i;
+	int rest;
 
-	d = dest;
-	s = src;
-	while (*d)
-		d++;
-	while (*s)
-		*d++ = *s++;
-	*d = '\0';
-	return (dest);
+	rest = 0;
+	i = 0;
+	str = malloc(nb);
+	while (nb != 0)
+	{
+		rest = nb % 10;
+		str[i++] = (rest > 9) ? (rest - 10) + 'a': rest + '0';
+		nb = nb / 10;
+	}
+	str[i] = '\0';
+	return (str);
 }
