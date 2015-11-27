@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 19:42:01 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/25 21:17:02 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/11/27 17:17:43 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,21 @@ char	*ft_strtrim(char const *s)
 {
 	char *str;
 	size_t i;
+	size_t l;
 
+	l = 0;
 	i = ft_strlen(s);
-	if (!(str = ft_memalloc(i + 1)))
-		return (0);
-	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-		i--;
-	while (*s == ' ' || *s == '\n' || *s == '\t')
+	while (s[i - 1] == ' ' || s[i - 1] == '\n' || s[i - 1] == '\t')
 	{
-		s++;
 		i--;
 	}
-	return (ft_memcpy(str, s, i));
+	while (s[l] == ' ' || s[l] == '\n' || s[l] == '\t')
+	{
+		l++;
+	}
+	if (i == 0 && s[l] == '\0')
+		return ("");
+	if (!(str = (char *)ft_memalloc(i + 1)))
+		return (0);
+	return (ft_strncpy(str, s + l, i - l));
 }

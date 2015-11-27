@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strtrimchr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 18:34:45 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/27 21:24:02 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/27 17:06:34 by mseinic           #+#    #+#             */
+/*   Updated: 2015/11/27 17:33:38 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+char	*ft_strtrimchr(char const *s, char chr)
 {
-	char * const save = s;
+	char *str;
+	size_t i;
+	size_t l;
 
-	if (s != NULL && f != NULL)
+	l = 0;
+	i = ft_strlen(s);
+	while (s[i - 1] == chr)
 	{
-		while (*s != '\0')
-		{
-			(*f)(s - save, s);
-			s++;
-		}
+		i--;
 	}
+	while (s[l] == chr)
+	{
+		l++;
+	}
+	if (i == 0 && s[l] == '\0')
+		return ("");
+	if (!(str = (char *)ft_memalloc(i + 1)))
+		return (0);
+	return (ft_strncpy(str, s + l, i - l));
 }

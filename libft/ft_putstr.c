@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 20:25:01 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/25 21:04:30 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/11/26 19:05:00 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	ft_putstr(char const *str)
 {
-	char const *p;
+	size_t i;
 
-	p = str;
-	while (*p)
-		p++;
-	write(1, str, p - str);
+	i = 0;
+	while (str[i])
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+
 }

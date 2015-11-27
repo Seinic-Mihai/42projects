@@ -6,27 +6,59 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 20:15:51 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/25 21:38:50 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/11/27 20:27:56 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
- 
-char    *ft_itoa(int nb)
-{
-	char *str;
-	int i;
-	int rest;
 
-	rest = 0;
-	i = 0;
-	str = malloc(nb);
+static size_t		ft_verif(int nb)
+{
+	int temp;
+	size_t char_nb;
+
+	char_nb = 0;
+	temp = nb;
+	if (nb < 0)
+	{
+		char_nb++;
+		temp = -nb;
+	}
+	while (temp != 0)
+	{
+		temp /= 10;
+		char_nb++;
+	}
+	return (char_nb);
+}
+
+char				*ft_itoa(int nb)
+{
+	char	*str;
+	int		char_nb;
+	char	sign;
+
+	sign = '0';
+	char_nb = 0;
+	if (nb == 0)
+		return("0");
+	if (nb == ENT_MIN)
+		return ("-2147483648");
+	char_nb = ft_verif(nb);
+	if (nb < 0)
+	{
+		sign = '-';
+		nb = -nb;
+	}
+	if (!(str = (char *)ft_memalloc(char_nb + 1)))
+		return (0);
+	if (sign == '-')
+		str[0] = '-';
+	str[char_nb] = '\0';
 	while (nb != 0)
 	{
-		rest = nb % 10;
-		str[i++] = (rest > 9) ? (rest - 10) + 'a': rest + '0';
-		nb = nb / 10;
+		str[--char_nb] = (nb % 10) + '0';
+		nb /= 10;
 	}
-	str[i] = '\0';
 	return (str);
 }

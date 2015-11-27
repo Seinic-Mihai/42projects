@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 19:38:18 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/25 21:00:45 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/11/27 20:50:28 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,19 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char *str;
-
-	if (!(str = (char *)ft_memalloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+	size_t	n1;
+	size_t	n2;
+	
+	n1 = 0;
+	n2 = 0;
+	if (s1 != NULL)
+		n1 = ft_strlen(s1);
+	if (s2 != NULL)
+		n2 = ft_strlen(s2);
+	if (!(str = (char *)ft_memalloc(n1 + n2 + 1)))
 		return (0);
-	str = ft_strcat((char *)s1, (char*)s2);
+	ft_memcpy(str, s1, n1);
+	ft_memcpy(str + n1, s2, n2);
+	str[n1 + n2] = '\0';
 	return (str);
 }

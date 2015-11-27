@@ -6,14 +6,17 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:21:38 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/25 21:24:50 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/11/27 21:41:42 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 void	ft_strdel(char **as)
-{
-	free(*as);
-	*as = 0;
+{	
+	if (as != NULL || *as != 0)
+	{
+		free(*as);
+		*as = NULL;
+	}
 }
