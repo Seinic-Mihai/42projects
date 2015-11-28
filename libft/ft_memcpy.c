@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 09:10:00 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/27 16:25:30 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/11/28 11:04:28 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,12 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	d = dst;
 	s = src;
-	while (n--)
-		*d++ = *s++;
+	while (n > 0)
+	{
+		*d = *s;
+		d++;
+		s++;
+		n--;
+	}
 	return (dst);
 }

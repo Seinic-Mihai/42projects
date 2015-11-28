@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 18:46:08 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/28 13:02:34 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/28 11:51:37 by mseinic           #+#    #+#             */
+/*   Updated: 2015/11/28 15:59:46 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char		*str;
-	size_t		i;
-	
-	i = 0;
-	if (s != NULL && (str = (char *)ft_memalloc(ft_strlen(s) + 1)))
-	{
-		while (s[i])
-		{
-			str[i] = (*f)(s[i]);
-			i++;
+	t_list	*new;
+
+	if (lst != NULL && (*f))
+		{	
+		new = (t_list *)ft_memalloc(sizeof(f(lst)));
+		if (new == NULL)
+			return (NULL);
+		new = f(lst);
+		new->next = ft_lstmap(lst->next, f);
+		return (new);
 		}
-		str[i] = '\0';
-		return (str);
-	}
 	return (NULL);
 }

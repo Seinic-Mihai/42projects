@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 20:15:51 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/27 20:27:56 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/11/28 11:00:45 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char				*ft_itoa(int nb)
 		sign = '-';
 		nb = -nb;
 	}
-	if (!(str = (char *)ft_memalloc(char_nb + 1)))
+	if (!(str = (char *)ft_memalloc(sizeof(char) * (char_nb + 1))))
 		return (0);
 	if (sign == '-')
 		str[0] = '-';

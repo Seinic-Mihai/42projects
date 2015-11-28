@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 18:46:08 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/28 13:02:34 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/28 11:42:38 by mseinic           #+#    #+#             */
+/*   Updated: 2015/11/28 12:16:53 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	char		*str;
-	size_t		i;
-	
-	i = 0;
-	if (s != NULL && (str = (char *)ft_memalloc(ft_strlen(s) + 1)))
+	if (new != NULL && alst != NULL && *alst != NULL)
 	{
-		while (s[i])
-		{
-			str[i] = (*f)(s[i]);
-			i++;
-		}
-		str[i] = '\0';
-		return (str);
+		new->next = *alst;
+		*alst = new;
 	}
-	return (NULL);
 }

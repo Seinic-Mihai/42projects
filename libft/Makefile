@@ -1,42 +1,72 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mseinic <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2015/11/28 16:27:43 by mseinic           #+#    #+#              #
+#    Updated: 2015/11/28 19:39:54 by mseinic          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME = libft.a
 
-SRC = ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
-	ft_isprint.c ft_memchr.c ft_memcmp.c ft_memset.c ft_strcat.c \
-	ft_strcmp.c ft_strcpy.c ft_strdup.c ft_strlen.c ft_strlcat.c\
-	ft_strchr.c ft_strncmp.c ft_strncpy.c ft_tolower.c \
-	ft_toupper.c ft_atoi.c ft_memcpy.c ft_memmove.c ft_memccpy.c\
-	ft_strncat.c ft_strnstr.c ft_strrchr.c ft_strstr.c \
-	ft_itoa.c ft_putchar_fd.c ft_putnbr_fd.c ft_strdel.c ft_strjoin.c ft_strnew.c \
-	ft_memalloc.c ft_putendl.c ft_putstr.c ft_strequ.c ft_strmap.c ft_strsplit.c \
-	ft_memdel.c ft_putendl_fd.c ft_putstr_fd.c ft_striter.c ft_strmapi.c ft_strsub.c \
-	ft_putchar.c ft_putnbr.c ft_strclr.c ft_striteri.c ft_strnequ.c ft_strtrim.c
+SRC_LIST = \
+	ft_bzero ft_isalnum ft_isalpha ft_isascii ft_isdigit \
+	ft_isprint ft_memchr ft_memcmp ft_memset ft_strcat \
+	ft_strcmp ft_strcpy ft_strdup ft_strlen ft_strlcat \
+	ft_strchr ft_strncmp ft_strncpy ft_tolower  \
+	ft_toupper ft_atoi ft_memcpy ft_memmove ft_memccpy \
+	ft_strncat ft_strnstr ft_strrchr ft_strstr \
+	ft_itoa ft_putchar_fd ft_putnbr_fd ft_strdel ft_strjoin ft_strnew \
+	ft_memalloc ft_putendl ft_putstr ft_strequ ft_strmap ft_strsplit \
+	ft_memdel ft_putendl_fd ft_putstr_fd ft_striter ft_strmapi ft_strsub \
+	ft_putchar ft_putnbr ft_strclr ft_striteri ft_strnequ ft_strtrim \
+	ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstmap ft_lstnew	
 
-FILES_H = libft.h
+HEADERS_LIST = libft
 
-FILES_O = ft_bzero.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o \
-	ft_isprint.o ft_memchr.o ft_memcmp.o ft_memset.o ft_strcat.o \
-	ft_strcmp.o ft_strcpy.o ft_strdup.o ft_strlen.o ft_strlcat.o\
-	ft_strncmp.o ft_strncpy.o ft_tolower.o ft_memmove.o\
-	ft_toupper.o ft_strchr.o ft_atoi.o ft_memcpy.o ft_memccpy.o\
-	ft_strncat.o ft_strnstr.o ft_strrchr.o ft_strstr.o \
-	ft_itoa.o ft_putchar_fd.o ft_putnbr_fd.o ft_strdel.o ft_strjoin.o ft_strnew.o \
-	ft_memalloc.o ft_putendl.o ft_putstr.o ft_strequ.o ft_strmap.o ft_strsplit.o \
-	ft_memdel.o ft_putendl_fd.o ft_putstr_fd.o ft_striter.o ft_strmapi.o ft_strsub.o \
-	ft_putchar.o ft_putnbr.o ft_strclr.o ft_striteri.o ft_strnequ.o ft_strtrim.o
+SRC_PATH = ./
 
-FLAGS = -Wall -Werror -Wextra -g
+HEADERS_PATH = ./
 
-NORME = echo "bingo"
+CACHE_PATH = ./cache/
 
-all: F1 F2
+COMPILER = clang
 
-F1:
-	gcc $(FLAGS) -c $(SRC) $(FILES_H)
-	
-F2:
-	ar -cvq $(NAME) $(FILES_O)
-	ranlib $(NAME)
+CFLAGS = -Wall -Werror -Wextra
+
+ALL_FLAGS = $(CFLAGS) -I $(HEADERS_PATH)
+
+#----------------ADDING PATH AND FORMAT TO THE FILENAMES--------------------#
+SRC = $(addprefix $(SRC_PATH),$(addsuffix .c,$(SRCLIST)))
+OBJ = $(addprefix $(CCHPATH),$(addsuffix .o,$(SRCLIST)))
+HDR = $(addprefix $(HDRPATH),$(addsuffix .h,$(HDRLIST)))
+#----------------ADDING PATH AND FORMAT TO THE FILENAMES--------------------#
+
+#-----------------COLORS------------------#
+#-------B = Bolt---------#
+#-------I = Intense------#
+#-------U = Underline----#
+U_Green = "\033[4;32m"
+B_I_Red = "\033[1;91m"
+Yellow  = "\033[0;33m"
+END     = "\033[0m"
+#-----------------COLORS------------------#
+
+
+all: $(NAME)
+
+#======= compiling NAME file =======
+$(NAME): $(OBJ)
+	@echo $(Yellow) " Compiling --------> $@ <--------" $(END)
+	@ar -cvq $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@echo $(U_Green) " !!! Ready !!!" $(END)
+
+#======= compiling *.c in *.o ======
+$(CACHE_PATH)
 
 clean:
 	/bin/rm -rf $(FILES_O)
