@@ -6,14 +6,13 @@
 #    By: mseinic <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 16:27:43 by mseinic           #+#    #+#              #
-#    Updated: 2015/11/28 19:39:54 by mseinic          ###   ########.fr        #
+#    Updated: 2015/11/28 21:39:52 by mseinic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC_LIST = \
-	ft_bzero ft_isalnum ft_isalpha ft_isascii ft_isdigit \
+SRC_LIST = ft_bzero ft_isalnum ft_isalpha ft_isascii ft_isdigit \
 	ft_isprint ft_memchr ft_memcmp ft_memset ft_strcat \
 	ft_strcmp ft_strcpy ft_strdup ft_strlen ft_strlcat \
 	ft_strchr ft_strncmp ft_strncpy ft_tolower  \
@@ -40,9 +39,9 @@ CFLAGS = -Wall -Werror -Wextra
 ALL_FLAGS = $(CFLAGS) -I $(HEADERS_PATH)
 
 #----------------ADDING PATH AND FORMAT TO THE FILENAMES--------------------#
-SRC = $(addprefix $(SRC_PATH),$(addsuffix .c,$(SRCLIST)))
-OBJ = $(addprefix $(CCHPATH),$(addsuffix .o,$(SRCLIST)))
-HDR = $(addprefix $(HDRPATH),$(addsuffix .h,$(HDRLIST)))
+SRC = $(addprefix $(SRC_PATH),$(addsuffix .c,$(SRC_LIST)))
+OBJ = $(addprefix $(CACHE_PATH),$(addsuffix .o,$(SRC_LIST)))
+HDR = $(addprefix $(HEADERS_PATH),$(addsuffix .h,$(HEADERS_LIST)))
 #----------------ADDING PATH AND FORMAT TO THE FILENAMES--------------------#
 
 #-----------------COLORS------------------#
@@ -61,15 +60,27 @@ all: $(NAME)
 #======= compiling NAME file =======
 $(NAME): $(OBJ)
 	@echo $(Yellow) " Compiling --------> $@ <--------" $(END)
-	@ar -cvq $(NAME) $(OBJ)
+	@ar rc -cvq $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@echo $(U_Green) " !!! Ready !!!" $(END)
 
 #======= compiling *.c in *.o ======
-$(CACHE_PATH)
-
+$(CACHE_PATH)%.o: $(SRC_PATH)%.c $(CACHE_PATH)
+	@echo $(U_Green)" -------- Compiling $< into $@ --------" $(END)
+	@$(COMPILER) $(ALL_FLAGS) -c $< -o $@
+#======= compiling *.h files ======
+#$(CACHE_PATH)%.h.gch: $(HEADERS_PATH)%.h $(CACHE_PATH)
+#	@echo " -------- Compiling $< into $@ --------" $(END)
+#	@$(COMPILER) $(ALL_FLAGS) -o $@ -c $<
+#======= creating cache file if not existing =======
+$(CACHE_PATH):
+	@echo $(Yellow) " cache not yet existing creating it ./" $(END)
+	@mkdir $(CACHE_PATH)
 clean:
-	/bin/rm -rf $(FILES_O)
+	/bin/rm -rf $(CACHE_PATH)
 fclean: clean
 	/bin/rm -rf $(NAME)
 re: fclean all
+
+test:
+	@echo "Objects :" $(OBJ)
