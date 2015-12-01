@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_iswhitespaces.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 09:10:00 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/29 17:43:37 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/29 13:31:51 by mseinic           #+#    #+#             */
+/*   Updated: 2015/11/29 15:41:55 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int	ft_iswhitespaces(int c)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
-
-	d = dst;
-	s = src;
-	while (n > 0)
-	{
-		*d = *s;
-		d++;
-		s++;
-		n--;
-	}
-	return (dst);
+	return ((c == ' ' || c == '\n' || c == '\t')
+					|| (c == '\f' || c == '\r' || c == '\v'));
 }

@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:34:45 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/27 21:24:02 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/11/29 10:25:08 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char * const save = s;
+	char *const save = s;
 
 	if (s != NULL && f != NULL)
 	{

@@ -6,7 +6,7 @@
 #    By: mseinic <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 16:27:43 by mseinic           #+#    #+#              #
-#    Updated: 2015/11/28 21:39:52 by mseinic          ###   ########.fr        #
+#    Updated: 2015/11/29 17:43:14 by mseinic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRC_LIST = ft_bzero ft_isalnum ft_isalpha ft_isascii ft_isdigit \
 	ft_memalloc ft_putendl ft_putstr ft_strequ ft_strmap ft_strsplit \
 	ft_memdel ft_putendl_fd ft_putstr_fd ft_striter ft_strmapi ft_strsub \
 	ft_putchar ft_putnbr ft_strclr ft_striteri ft_strnequ ft_strtrim \
-	ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstmap ft_lstnew	
+	ft_lstadd ft_lstdel ft_lstdelone ft_lstiter ft_lstmap ft_lstnew	\
+	ft_abs ft_strtrimchr ft_iswhitespaces ft_lstaddend ft_count_alpha \
+	ft_count_digit ft_count_alnum
 
 HEADERS_LIST = libft
 
@@ -48,7 +50,7 @@ HDR = $(addprefix $(HEADERS_PATH),$(addsuffix .h,$(HEADERS_LIST)))
 #-------B = Bolt---------#
 #-------I = Intense------#
 #-------U = Underline----#
-U_Green = "\033[4;32m"
+Green = "\033[0;32m"
 B_I_Red = "\033[1;91m"
 Yellow  = "\033[0;33m"
 END     = "\033[0m"
@@ -60,22 +62,22 @@ all: $(NAME)
 #======= compiling NAME file =======
 $(NAME): $(OBJ)
 	@echo $(Yellow) " Compiling --------> $@ <--------" $(END)
-	@ar rc -cvq $(NAME) $(OBJ)
+	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo $(U_Green) " !!! Ready !!!" $(END)
+	@echo $(Green) " !!! Ready !!!" $(END)
 
 #======= compiling *.c in *.o ======
-$(CACHE_PATH)%.o: $(SRC_PATH)%.c $(CACHE_PATH)
-	@echo $(U_Green)" -------- Compiling $< into $@ --------" $(END)
+$(CACHE_PATH)%.o: $(SRC_PATH)%.c 
+	@mkdir -p $(CACHE_PATH)
+	@echo $(Green)" -------- Compiling $< into \t >> \t$@ --------" $(END)
 	@$(COMPILER) $(ALL_FLAGS) -c $< -o $@
 #======= compiling *.h files ======
 #$(CACHE_PATH)%.h.gch: $(HEADERS_PATH)%.h $(CACHE_PATH)
 #	@echo " -------- Compiling $< into $@ --------" $(END)
 #	@$(COMPILER) $(ALL_FLAGS) -o $@ -c $<
 #======= creating cache file if not existing =======
-$(CACHE_PATH):
-	@echo $(Yellow) " cache not yet existing creating it ./" $(END)
-	@mkdir $(CACHE_PATH)
+#$(CACHE_PATH):
+#	@echo $(Yellow) " cache not yet existing creating it ./" $(END)
 clean:
 	/bin/rm -rf $(CACHE_PATH)
 fclean: clean
@@ -84,3 +86,5 @@ re: fclean all
 
 test:
 	@echo "Objects :" $(OBJ)
+
+.PHONY: all clean fclean re

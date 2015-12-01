@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 20:15:51 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/28 11:00:45 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/11/29 11:32:20 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static size_t		ft_verif(int nb)
 {
-	int temp;
-	size_t char_nb;
+	int		temp;
+	size_t	char_nb;
 
 	char_nb = 0;
 	temp = nb;
@@ -36,24 +36,20 @@ char				*ft_itoa(int nb)
 {
 	char	*str;
 	int		char_nb;
-	char	sign;
 
-	sign = '0';
 	char_nb = 0;
 	if (nb == 0)
-		return("0");
+		return (ft_strdup("0"));
 	if (nb == ENT_MIN)
-		return ("-2147483648");
+		return (ft_strdup("-2147483648"));
 	char_nb = ft_verif(nb);
-	if (nb < 0)
-	{
-		sign = '-';
-		nb = -nb;
-	}
 	if (!(str = (char *)ft_memalloc(sizeof(char) * (char_nb + 1))))
 		return (0);
-	if (sign == '-')
+	if (nb < 0)
+	{
 		str[0] = '-';
+		nb = -nb;
+	}
 	str[char_nb] = '\0';
 	while (nb != 0)
 	{

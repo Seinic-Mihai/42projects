@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstaddend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 09:10:00 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/29 17:43:37 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/29 16:06:45 by mseinic           #+#    #+#             */
+/*   Updated: 2015/11/29 17:44:41 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	ft_lstaddend(t_list **alst, t_list *new)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
+	t_list *head;
 
-	d = dst;
-	s = src;
-	while (n > 0)
+	head = *alst;
+	if (new != NULL && alst != NULL && *alst != NULL)
 	{
-		*d = *s;
-		d++;
-		s++;
-		n--;
+		while (head->next != NULL)
+			head = head->next;
+		head->next = new;
 	}
-	return (dst);
 }

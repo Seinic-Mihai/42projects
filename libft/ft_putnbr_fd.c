@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 20:40:47 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/26 14:41:22 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/11/29 10:26:56 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd('-', fd);
 	}
 	if (nb >= 10)
-	{	
+	{
 		ft_putnbr_fd(nb / 10, fd);
 		ft_putnbr_fd(nb % 10, fd);
 	}

@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:25:18 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/27 18:56:52 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/11/29 10:26:20 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_strclr(char *s)
 {
-	if (s)
-		ft_bzero(s,ft_strlen(s));
+	if (s != NULL)
+		ft_bzero(s, ft_strlen(s));
 }

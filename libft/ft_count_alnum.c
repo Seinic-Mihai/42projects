@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_count_alnum.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 09:10:00 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/29 17:43:37 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/29 17:40:18 by mseinic           #+#    #+#             */
+/*   Updated: 2015/11/29 17:45:34 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+size_t	ft_count_alnum(const char *str)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
+	size_t nb;
 
-	d = dst;
-	s = src;
-	while (n > 0)
+	nb = 0;
+	if (str != NULL)
 	{
-		*d = *s;
-		d++;
-		s++;
-		n--;
+		while (*str != '\0')
+		{
+			if (ft_isalnum(*str))
+				nb++;
+			str++;
+		}
 	}
-	return (dst);
+	return (nb);
 }
