@@ -6,52 +6,59 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 20:06:18 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/30 16:34:24 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/12/02 19:41:58 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static size_t		ft_count_words(const char *str, char separator)
+static const char	*ft_to_skip(const char *str, char c)
 {
-	size_t			nb;
-	size_t			i;
+	size_t i;
 
-	nb = 0;
 	i = 0;
-	while (str[i])
-	{
-		if (str[i] != separator)
-			nb++;
+	while (str[i] == c && str[i] != '\0')
 		i++;
-	}
-	return (nb);
+	if (str[i] == '\0')
+		return (NULL);
+	return (str + i);
 }
 
-char				**ft_strsplit(const char *s, char c)
+static const char	*ft_end_of_skip(const char *str, char c)
 {
-	char			**ret;
-	size_t			i;
-	size_t			j;
-	size_t			len;
+	size_t i;
 
-	if (!s || !c || !(ret = ft_memalloc(ft_count_words(s, c) + 1)))
-		return (NULL);
 	i = 0;
-	j = 0;
-	while (s[i] != '\0')
+	while (str[i] != c && str[i] != '\0')
+		i++;
+	return ((str + i) - 1);
+}
+
+char				**ft_strsplit(char const *s, char c)
+{
+	char		**tab;
+	char const	*aux;
+	int			nb_words;
+
+	nb_words = 0;
+	aux = s;
+	if (!s || !c)
+		return (NULL);
+	while ((aux = ft_to_skip(aux, c)) != NULL)
 	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			len = 0;
-			while (s[i + len] && (s[i + len] != c))
-				len++;
-			ret[j++] = ft_strsub(s, i, len);
-			i = i + len;
-		}
+		aux = ft_end_of_skip(aux, c) + 1;
+		nb_words++;
 	}
-	ret[j] = 0;
-	return (ret);
+	if (!(tab = (char **)malloc(sizeof(char *) * (nb_words + 1))))
+		return (NULL);
+	tab[nb_words] = NULL;
+	nb_words = 0;
+	while ((s = ft_to_skip(s, c)) != NULL)
+	{
+		aux = s;
+		s = ft_end_of_skip(s, c) + 1;
+		tab[nb_words++] = ft_strsub(aux, 0, s - aux);
+	}
+	return (tab);
 }

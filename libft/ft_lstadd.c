@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 11:42:38 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/30 16:43:53 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/12/02 19:45:54 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (new != NULL && alst != NULL && *alst != NULL)
-	{
-		new->next = *alst;
-		*alst = new;
-	}
+	t_list *head;
+
+	head = *alst;
+	new->next = head;
+	*alst = new;
 }

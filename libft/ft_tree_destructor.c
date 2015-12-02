@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   ft_tree_destructor.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 18:28:40 by mseinic           #+#    #+#             */
-/*   Updated: 2015/12/02 17:11:03 by mseinic          ###   ########.fr       */
+/*   Created: 2015/12/02 19:57:28 by mseinic           #+#    #+#             */
+/*   Updated: 2015/12/02 20:14:25 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striter(char *s, void (*f)(char *))
+void	ft_tree_destructor(t_node *node)
 {
-	if (s != NULL && f != NULL)
+	if (node != NULL)
 	{
-		while (*s != '\0')
-		{
-			(*f)(s);
-			s++;
-		}
+		ft_destructor_tree(node->left);
+		ft_destructor_tree(node->right);
+		free(node);
 	}
 }
