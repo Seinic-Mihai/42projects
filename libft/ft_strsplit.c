@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 20:06:18 by mseinic           #+#    #+#             */
-/*   Updated: 2015/12/02 19:41:58 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/12/03 16:30:40 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ char				**ft_strsplit(char const *s, char c)
 
 	nb_words = 0;
 	aux = s;
-	if (!s || !c)
-		return (NULL);
 	while ((aux = ft_to_skip(aux, c)) != NULL)
 	{
 		aux = ft_end_of_skip(aux, c) + 1;

@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 11:51:37 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/29 10:30:31 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/12/03 16:43:41 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*new;
+	t_list	*cursor;
+	t_list	*modif;
 
-	if (lst != NULL && (*f))
+	cursor = lst;
+	new = f(cursor);
+	modif = new;
+	while (cursor->next != NULL)
 	{
-		new = (t_list *)ft_memalloc(sizeof(f(lst)));
-		if (new == NULL)
-			return (NULL);
-		new = f(lst);
-		new->next = ft_lstmap(lst->next, f);
-		return (new);
+		new->next = f(cursor->next);
+		new = new->next;
+		cursor = cursor->next;
 	}
-	return (NULL);
+	return (modif);
 }

@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 19:42:01 by mseinic           #+#    #+#             */
-/*   Updated: 2015/12/02 16:20:31 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/12/03 16:29:44 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char		*ft_strtrim(char const *s)
 	size_t	i;
 	size_t	l;
 
-	if (s == NULL)
-		return (0);
 	l = 0;
 	i = ft_strlen(s);
 	while (s[i - 1] == ' ' || s[i - 1] == '\n' || s[i - 1] == '\t')

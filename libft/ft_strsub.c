@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 19:17:07 by mseinic           #+#    #+#             */
-/*   Updated: 2015/12/02 19:41:21 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/12/03 16:23:45 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ char			*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	char	*str;
 
-	if (s == NULL)
-		return (NULL);
 	if ((str = (char *)ft_memalloc((sizeof(char)) * len + 1)) != NULL)
 	{
 		str = ft_cpy(str, s, start, len);
