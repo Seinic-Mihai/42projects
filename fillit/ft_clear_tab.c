@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_clear_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 09:10:00 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/29 17:43:37 by mseinic          ###   ########.fr       */
+/*   Created: 2015/12/09 12:18:29 by mseinic           #+#    #+#             */
+/*   Updated: 2015/12/09 12:21:21 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int	ft_clear_tab(char **tab)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
+	size_t	i;
 
-	d = dst;
-	s = src;
-	while (n > 0)
+	i = -1;
+	if (tab != NULL)
 	{
-		*d = *s;
-		d++;
-		s++;
-		n--;
+		while (tab[++i])
+			free(tab[i]);
+		free(tab);
 	}
-	return (dst);
+	return (1);
 }
