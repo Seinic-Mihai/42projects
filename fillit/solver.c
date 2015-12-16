@@ -5,15 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/09 12:02:23 by mseinic           #+#    #+#             */
-/*   Updated: 2015/12/09 13:54:40 by mseinic          ###   ########.fr       */
+/*   Created: 2015/12/16 13:07:49 by mseinic           #+#    #+#             */
+/*   Updated: 2015/12/16 14:08:38 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft.h"
 
-static void			init_solution(char *solution, int j)
+static void	init_solution(char *solution, int j)
 {
 	int				i;
 
@@ -28,75 +27,74 @@ static void			init_solution(char *solution, int j)
 	}
 }
 
-static char			*enlarge_solution(char **t, char *s, int width)
+static char	*increasing_solution(char **tetris, char *sol, int width)
 {
-	free(s);
-	if ((s = ft_strnew((width + 2) * (width + 1))) == NULL)
+	free(sol);
+	if ((sol = ft_strnew((width + 2) * (width + 1))) == NULL)
 		return (NULL);
-	init_solution(s, width + 1);
-	reset_all_tetriminos(t);
-	return (s);
+	init_solution(sol, width + 1);
+	reset_all_tetris(tetris);
+	return (sol);
 }
 
-static int			place_tetriminos(char *t, char *s, int start, char letter)
+static int	place_tetris(char *tetris, char *sol, int start, char letter)
 {
-	int				i;
-	int				j;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (!ft_isalpha(t[i]))
+	while (!ft_isalpha(tetris[i]))
 		++i;
-	if (set_tetriminos(t, i, s, start) == 4)
+	if (set_tetris(tetris, i, sol, start) == 4)
 		return (1);
-	reset_tetriminos(t);
+	reset_tetris(tetris);
 	j = 0;
-	while (s[j])
+	while (sol[j])
 	{
-		if (s[j] == letter)
-			s[j] = '.';
+		if (sol[j] == letter)
+			sol[j] = '.';
 		++j;
 	}
 	return (0);
 }
 
-static int			fill_solution(char **tet, char **sol, int index)
+static int	fill_solution(char **tetris, char **sol, int index)
 {
-	int				i;
-	char			*sol_cpy;
+	int		i;
+	char	*sol_cpy;
 
 	i = 0;
-	if (tet[index] == NULL)
+	if (tetris[index] == NULL)
 		return (1);
 	sol_cpy = ft_strdup(*sol);
 	while ((*sol)[i])
 	{
-		if (!place_tetriminos(tet[index], *sol, i, 'A' + index))
+		if (!place_tetris(tetris[index], *sol, i, 'A' + index))
 		{
-			++i;
+			i++;
 			continue ;
 		}
-		if (fill_solution(tet, sol, index + 1))
+		if (fill_solution(tetris, sol, index + 1))
 		{
 			free(sol_cpy);
 			return (1);
 		}
 		free(*sol);
 		*sol = ft_strdup(sol_cpy);
-		++i;
 	}
 	free(sol_cpy);
 	return (0);
 }
 
-char				*solver(char **tetriminos)
+char		*solver(char **tetris)
 {
-	int				i;
-	int				j;
-	char			*solution;
+	int		i;
+	int		j;
+	char	*solution;
 
 	i = 0;
 	j = 0;
-	while (tetriminos[i])
+	while (tetris[i])
 		++i;
 	i *= 4;
 	while (j * j < i)
@@ -104,9 +102,9 @@ char				*solver(char **tetriminos)
 	if ((solution = ft_strnew((j + 1) * j)) == NULL)
 		return (NULL);
 	init_solution(solution, j);
-	while (!fill_solution(tetriminos, &solution, 0))
+	while (!fill_solution(tetris, &solution, 0))
 	{
-		if ((solution = enlarge_solution(tetriminos, solution, j)) == NULL)
+		if ((solution = increasing_solution(tetris, solution, j)) == NULL)
 			return (NULL);
 		++j;
 	}

@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 12:00:19 by mseinic           #+#    #+#             */
-/*   Updated: 2015/12/09 12:23:39 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/12/16 12:56:06 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-int				ft_clear_tab(char **tab);
+void			clear_tab(char **tab);
 char			**check_file(int fd);
-void			reset_tetriminos(char *tetriminos);
-void			reset_all_tetriminos(char **tetriminos);
-int				is_tetriminos(char *tetriminos, int i, char letter);
-int				set_tetriminos(char *tetriminos, int i, char *solution, int j);
-char			*solver(char **tetriminos);
+void			reset_tetris(char *tetris);
+void			reset_all_tetris(char **tetris);
+int				is_correct_tetris(char *tetris, int i, char letter);
+int				set_tetris(char *tetris, int i, char *solution, int j);
+char			*solver(char **tetris);
 
 #endif

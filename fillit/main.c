@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 11:49:09 by mseinic           #+#    #+#             */
-/*   Updated: 2015/12/09 14:32:19 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/12/16 12:43:50 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void			ft_exit(void)
 int					main(int ac, char **av)
 {
 	int				fd;
-	char			**tetriminos;
+	char			**tetris;
 	char			*solution;
 
 	if (ac != 2)
@@ -29,14 +29,15 @@ int					main(int ac, char **av)
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		ft_exit();
-	tetriminos = check_file(fd);
+	tetris = check_file(fd);
 	close(fd);
-	if (tetriminos == NULL)
+	if (tetris == NULL)
 		ft_exit();
-	if ((solution = solver(tetriminos)) == NULL)
+	solution = solver(tetris);
+	if (solution == NULL)
 		ft_exit();
-	ft_putendl(solution);
-	ft_clear_tab(tetriminos);
+	ft_putstr(solution);
+	clear_tab(tetris);
 	free(solution);
 	return (0);
 }

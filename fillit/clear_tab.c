@@ -6,13 +6,13 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 12:18:29 by mseinic           #+#    #+#             */
-/*   Updated: 2015/12/09 12:21:21 by mseinic          ###   ########.fr       */
+/*   Updated: 2015/12/16 12:33:25 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	ft_clear_tab(char **tab)
+void	clear_tab(char **tab)
 {
 	size_t	i;
 
@@ -23,5 +23,4 @@ int	ft_clear_tab(char **tab)
 			free(tab[i]);
 		free(tab);
 	}
-	return (1);
 }
