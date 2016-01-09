@@ -6,7 +6,7 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 19:01:41 by mseinic           #+#    #+#             */
-/*   Updated: 2016/01/08 20:22:30 by mseinic          ###   ########.fr       */
+/*   Updated: 2016/01/09 17:19:18 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # endif
 
 # ifndef BUFF_SIZE
-#	define BUFF_SIZE 1
+#	define BUFF_SIZE 32
 # endif
 
 typedef struct		s_data
