@@ -5,75 +5,73 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/08 19:21:03 by mseinic           #+#    #+#             */
-/*   Updated: 2016/01/26 17:30:36 by mseinic          ###   ########.fr       */
+/*   Created: 2016/01/29 17:04:12 by mseinic           #+#    #+#             */
+/*   Updated: 2016/01/29 19:52:59 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void		new_string_joined(char **stack, char *str)
+static char		*new_joined(char *str1, char *str2)
 {
 	char	*tmp;
 
-	tmp = ft_strdup(*stack);
-	ft_strdel(&(*stack));
-	*stack = ft_strjoin(tmp, str);
-	ft_strdel(&tmp);
+	tmp = ft_strjoin(str1, str2);
+	if (tmp == NULL)
+		return (NULL);
+	ft_strdel(&str1);
+	return (tmp);
 }
 
-static int		reading_and_joining(char **str_rest, int *nb_bits,
-								char **stack, int const fd)
+static int		end_file(char **s, char **line)
 {
-	char	buff[BUFF_SIZE + 1];
-
-	if (*str_rest == NULL)
+	*line = ft_strdup(*s);
+	ft_strdel(&(*s));
+	if (*line[0] == '\0')
 	{
-		*nb_bits = read(fd, buff, BUFF_SIZE);
-		if (*nb_bits == -1)
-		{
-			ft_strdel(&(*stack));
-			return (-1);
-		}
-		buff[*nb_bits] = '\0';
-		new_string_joined(&(*stack), buff);
-	}
-	else
-	{
-		new_string_joined(&*(stack), *str_rest);
-		ft_strdel(&(*str_rest));
-	}
-	return (0);
-}
-
-static int		return_line(char **str_rest, int const fd, char **line)
-{
-	int		nb_bits;
-	char	*stack;
-	char	*new_rest;
-
-	nb_bits = 1;
-	stack = ft_strdup("");
-	while ((new_rest = ft_strchr(stack, '\n')) == NULL && nb_bits != 0)
-		if (reading_and_joining(&(*str_rest), &nb_bits, &stack, fd) != 0)
-			return (-1);
-	if (new_rest != NULL)
-	{
-		new_rest[0] = '\0';
-		*str_rest = ft_strdup(new_rest + 1);
-	}
-	*line = ft_strdup(stack);
-	ft_strdel(&stack);
-	if (nb_bits == 0 && *str_rest == '\0')
+		ft_strdel(&(*line));
 		return (0);
+	}
+	return (1);
+}
+
+static int		new_line(char **str, char **line)
+{
+	char	*next_line;
+	char	*tmp;
+
+	tmp = *str;
+	next_line = ft_strchr(*str, '\n');
+	if (next_line == NULL)
+		return (0);
+	*next_line = '\0';
+	*line = ft_strdup(*str);
+	*str = ft_strdup(next_line + 1);
+	ft_strdel(&tmp);
 	return (1);
 }
 
 int				get_next_line(int const fd, char **line)
 {
-	static char *rest_tab[257];
+	static char	*rest[256];
+	char		buff[BUFF_SIZE + 1];
+	int			ret;
 
-	if (fd < 0 || line == NULL)
+	if (fd < 0 || !line || fd > 256)
 		return (-1);
-	return (return_line(&rest_tab[fd], fd, line));
+	if (rest[fd] && new_line(&(rest[fd]), line))
+		return (1);
+	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
+	{
+		buff[ret] = '\0';
+		if (rest[fd] == NULL)
+			rest[fd] = ft_strdup(buff);
+		else
+			rest[fd] = new_joined(rest[fd], buff);
+		if (new_line(&(rest[fd]), line) == 1)
+			return (1);
+	}
+	if (rest[fd] != NULL && ret >= 0)
+		return (end_file(&(rest[fd]), line));
+	return (ret > 0 ? 1 : ret);
 }

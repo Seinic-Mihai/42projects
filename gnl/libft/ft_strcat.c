@@ -6,16 +6,16 @@
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 10:48:45 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/25 21:03:10 by mseinic          ###   ########.fr       */
+/*   Updated: 2016/01/29 17:13:50 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *restrict dest, const char *restrict src)
+char	*ft_strcat(char *dest, const char *src)
 {
-	char		*restrict d;
-	const char	*restrict s;
+	char		*d;
+	const char	*s;
 
 	d = dest;
 	s = src;

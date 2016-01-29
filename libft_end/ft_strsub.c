@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mseinic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 11:08:14 by mseinic           #+#    #+#             */
-/*   Updated: 2015/11/27 17:34:33 by mseinic          ###   ########.fr       */
+/*   Created: 2015/11/25 19:17:07 by mseinic           #+#    #+#             */
+/*   Updated: 2015/12/03 20:49:41 by mseinic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char			*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char *ptr;
+	char	*str;
 
-	ptr = 0;
-	if (*s == c)
-		return (ptr = (char*)s);
-	while (*s++)
-		if (*s == c)
-			return (ptr = (char *)s);
-	return (ptr);
+	if ((str = ft_strnew(len)) == NULL)
+		return (NULL);
+	ft_memcpy(str, s + start, len);
+	return (str);
 }
