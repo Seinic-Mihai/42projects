@@ -1,0 +1,51 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e2r3p3.42.fr
+Darwin 15.3.0 x86_64
+$> date
+Fri Feb 19 15:39:50 CET 2016
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.3.0
+Thread model: posix
+$> clang --version
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.3.0
+Thread model: posix
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2016/c-exam-beginner/practice-exam_20160219/mseinic
+
+= Git history ==================================================================
+$> git -C /var/folders/dn/l4x7tmjn4xz1wjls6ybtkv4c0000gq/T/tmpDZsfrf/user log --pretty='%H - %an, %ad : %s'
+0a1702edc355224ec8580e0ccd6f210fef1191c8 - Mihai SEINIC, Fri Feb 19 15:36:44 2016 +0100 : yolo
+6baf755c5aaaeae2ed9ababfca3543c27ef758dd - Mihai SEINIC, Fri Feb 19 15:13:08 2016 +0100 : la
+c2b2c247ed42aed593131da082ec48d5957d4f5a - Mihai SEINIC, Fri Feb 19 13:30:32 2016 +0100 : la
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/dn/l4x7tmjn4xz1wjls6ybtkv4c0000gq/T/tmpDZsfrf/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  754 Feb 19 15:39 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought  102 Feb 19 15:39 fprime
+drwxr-xr-x  3 deepthought  deepthought  102 Feb 19 15:39 ft_itoa
+drwxr-xr-x  3 deepthought  deepthought  102 Feb 19 15:39 ft_list_remove_if
+
+/var/folders/dn/l4x7tmjn4xz1wjls6ybtkv4c0000gq/T/tmpDZsfrf/user/fprime:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1232 Feb 19 15:39 fprime.c
+
+/var/folders/dn/l4x7tmjn4xz1wjls6ybtkv4c0000gq/T/tmpDZsfrf/user/ft_itoa:
+total 8
+-rw-r--r--  1 deepthought  deepthought  2039 Feb 19 15:39 ft_itoa.c
+
+/var/folders/dn/l4x7tmjn4xz1wjls6ybtkv4c0000gq/T/tmpDZsfrf/user/ft_list_remove_if:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1429 Feb 19 15:39 ft_list_remove_if.c
+ 
+= ft_itoa_base =================================================================
+Nothing turned in
+Grade: 0
+
+= Final grade: 0 ===============================================================

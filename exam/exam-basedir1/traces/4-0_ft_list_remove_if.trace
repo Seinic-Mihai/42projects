@@ -1,0 +1,48 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e3r5p21.42.fr
+Darwin 15.3.0 x86_64
+$> date
+Fri Feb 19 13:30:44 CET 2016
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.3.0
+Thread model: posix
+$> clang --version
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.3.0
+Thread model: posix
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2016/c-exam-beginner/practice-exam_20160219/mseinic
+
+= Git history ==================================================================
+$> git -C /var/folders/mp/vx4lnwds6gg962kdsmqmd50w0000gq/T/tmpahAkqM/user log --pretty='%H - %an, %ad : %s'
+c2b2c247ed42aed593131da082ec48d5957d4f5a - Mihai SEINIC, Fri Feb 19 13:30:32 2016 +0100 : la
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/mp/vx4lnwds6gg962kdsmqmd50w0000gq/T/tmpahAkqM/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  255 Feb 19 13:30 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought  102 Feb 19 13:30 ft_list_remove_if
+
+/var/folders/mp/vx4lnwds6gg962kdsmqmd50w0000gq/T/tmpahAkqM/user/ft_list_remove_if:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1429 Feb 19 13:30 ft_list_remove_if.c
+ 
+= ft_list_remove_if ============================================================
+$> clang -Wextra -Wall -Werror ft_list_remove_if.c ft_create_elem.c main.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./zy23fprultepsrj6pzwx9owo 
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./yt425uxlcdsc09a19xty7txa "yIwL453W"
+Command './yt425uxlcdsc09a19xty7txa "yIwL453W"' got killed by a Segmentation fault (Signal -11)
+Grade: 0
+
+= Final grade: 0 ===============================================================

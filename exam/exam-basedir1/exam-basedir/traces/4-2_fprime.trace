@@ -1,0 +1,127 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+e1r13p5.42.fr
+Darwin 15.3.0 x86_64
+$> date
+Fri Feb 19 15:36:57 CET 2016
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.3.0
+Thread model: posix
+$> clang --version
+Apple LLVM version 7.0.2 (clang-700.1.81)
+Target: x86_64-apple-darwin15.3.0
+Thread model: posix
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: auto-exam/2016/c-exam-beginner/practice-exam_20160219/mseinic
+
+= Git history ==================================================================
+$> git -C /var/folders/b9/7c6fxzg956lg4x1ymr65chx00000gq/T/tmp7AgiiW/user log --pretty='%H - %an, %ad : %s'
+0a1702edc355224ec8580e0ccd6f210fef1191c8 - Mihai SEINIC, Fri Feb 19 15:36:44 2016 +0100 : yolo
+6baf755c5aaaeae2ed9ababfca3543c27ef758dd - Mihai SEINIC, Fri Feb 19 15:13:08 2016 +0100 : la
+c2b2c247ed42aed593131da082ec48d5957d4f5a - Mihai SEINIC, Fri Feb 19 13:30:32 2016 +0100 : la
+ 
+= Collected files ==========================================
+$> ls -lAR /var/folders/b9/7c6fxzg956lg4x1ymr65chx00000gq/T/tmp7AgiiW/user
+total 8
+-rw-r--r--  1 deepthought  deepthought  754 Feb 19 15:36 __GIT_HISTORY
+drwxr-xr-x  3 deepthought  deepthought  102 Feb 19 15:36 fprime
+drwxr-xr-x  3 deepthought  deepthought  102 Feb 19 15:36 ft_itoa
+drwxr-xr-x  3 deepthought  deepthought  102 Feb 19 15:36 ft_list_remove_if
+
+/var/folders/b9/7c6fxzg956lg4x1ymr65chx00000gq/T/tmp7AgiiW/user/fprime:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1232 Feb 19 15:36 fprime.c
+
+/var/folders/b9/7c6fxzg956lg4x1ymr65chx00000gq/T/tmp7AgiiW/user/ft_itoa:
+total 8
+-rw-r--r--  1 deepthought  deepthought  2039 Feb 19 15:36 ft_itoa.c
+
+/var/folders/b9/7c6fxzg956lg4x1ymr65chx00000gq/T/tmp7AgiiW/user/ft_list_remove_if:
+total 8
+-rw-r--r--  1 deepthought  deepthought  1429 Feb 19 15:36 ft_list_remove_if.c
+ 
+= fprime =======================================================================
+$> clang -Wextra -Wall -Werror fprime.c -o user_exe 
+
+= Test 1 ===================================================
+$> ./ry564gcmsfqwavvcl97ulbxd 
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./syx2egp2b3157uz4rfixf0qw "1" "2" "3" "4" "5" "6"
+$> diff -U 3 user_output_test2 test2.output | cat -e
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./sblk9yw2uvxc0lvdhfzwuj9l 91
+$> diff -U 3 user_output_test3 test3.output | cat -e
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./h2rxzqz3hhvt7diwfnx8ppgj 171
+$> diff -U 3 user_output_test4 test4.output | cat -e
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./u8adxcdxssmwwomsvz6tvs12 71
+$> diff -U 3 user_output_test5 test5.output | cat -e
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./eimlm1zqmooxk3s1hc29l1fs 90
+$> diff -U 3 user_output_test6 test6.output | cat -e
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./y2hzj5mym6uj1t9h8stsx8vt 171
+$> diff -U 3 user_output_test7 test7.output | cat -e
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./6qr9e4e8elewtpxdmgzx3yz3 193
+$> diff -U 3 user_output_test8 test8.output | cat -e
+
+Diff OK :D
+= Test 9 ===================================================
+$> ./gz847j76m93mozdija0vq4ju 45
+$> diff -U 3 user_output_test9 test9.output | cat -e
+
+Diff OK :D
+= Test 10 ==================================================
+$> ./d1o6b8fo2866muyvcdnrzyoa 124
+$> diff -U 3 user_output_test10 test10.output | cat -e
+
+Diff OK :D
+= Test 11 ==================================================
+$> ./1fybwz6yh9e40nbwkzyg3p48 1409948
+$> diff -U 3 user_output_test11 test11.output | cat -e
+
+Diff OK :D
+= Test 12 ==================================================
+$> ./ou7quj9y9ph5rmj1ap099fia 1558278
+$> diff -U 3 user_output_test12 test12.output | cat -e
+
+Diff OK :D
+= Test 13 ==================================================
+$> ./85b9hx0nh3od0sggu1eocfo1 604059
+$> diff -U 3 user_output_test13 test13.output | cat -e
+
+Diff OK :D
+= Test 14 ==================================================
+$> ./cw8jyhcsxpy0mo86qlf0fg6v 1061815
+$> diff -U 3 user_output_test14 test14.output | cat -e
+
+Diff OK :D
+= Test 15 ==================================================
+$> ./fs1bztyp2qxk24oor09dwutp 1512787
+$> diff -U 3 user_output_test15 test15.output | cat -e
+
+Diff OK :D
+Grade: 1
+
+= Final grade: 1 ===============================================================
